@@ -1,0 +1,12 @@
+.idea
+assets
+build*
+content
+coverage
+data
+doc
+log
+node_modules
+public
+config.json
+config.server.json
