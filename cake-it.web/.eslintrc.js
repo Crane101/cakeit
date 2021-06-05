@@ -1,29 +1,29 @@
 module.exports = {
     env: {
         browser: true,
-        node: true
+        node: true,
     },
     settings: {
         react: {
-            version: 'detect'
-        }
+            version: 'detect',
+        },
     },
-    extends: ['plugin:react/recommended', 'eslint:recommended'],
+    extends: ['plugin:react/recommended', 'eslint:recommended', 'plugin:promise/recommended'],
     parser: '@typescript-eslint/parser',
     parserOptions: {
         project: 'tsconfig.json',
-        sourceType: 'module'
+        sourceType: 'module',
     },
-    plugins: ['eslint-plugin-prefer-arrow', 'eslint-plugin-unicorn', 'eslint-plugin-react', '@typescript-eslint', '@typescript-eslint/tslint'],
+    plugins: ['eslint-plugin-prefer-arrow', 'eslint-plugin-unicorn', 'eslint-plugin-react', '@typescript-eslint', '@typescript-eslint/tslint', 'promise'],
     rules: {
         'brace-style': 'error',
         'react/react-in-jsx-scope': 'off',
-        'react/jsx-filename-extension': [1, {extensions: ['.ts', '.tsx']}],
+        'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
         '@typescript-eslint/array-type': [
             'error',
             {
-                default: 'array'
-            }
+                default: 'array',
+            },
         ],
         '@typescript-eslint/consistent-type-assertions': 'error',
         '@typescript-eslint/consistent-type-definitions': 'error',
@@ -34,21 +34,21 @@ module.exports = {
             {
                 multiline: {
                     delimiter: 'semi',
-                    requireLast: true
+                    requireLast: true,
                 },
                 singleline: {
                     delimiter: 'semi',
-                    requireLast: false
-                }
-            }
+                    requireLast: false,
+                },
+            },
         ],
         '@typescript-eslint/member-ordering': 'error',
         '@typescript-eslint/naming-convention': [
             'error',
             {
                 selector: 'variable',
-                format: ['camelCase', 'PascalCase']
-            }
+                format: ['camelCase', 'PascalCase'],
+            },
         ],
         '@typescript-eslint/no-empty-function': 'error',
         '@typescript-eslint/no-empty-interface': 'error',
@@ -59,8 +59,8 @@ module.exports = {
         '@typescript-eslint/no-shadow': [
             'error',
             {
-                hoist: 'all'
-            }
+                hoist: 'all',
+            },
         ],
         '@typescript-eslint/no-unnecessary-type-assertion': 'error',
         '@typescript-eslint/no-unused-expressions': 'error',
@@ -70,8 +70,8 @@ module.exports = {
             'error',
             'single',
             {
-                avoidEscape: true
-            }
+                avoidEscape: true,
+            },
         ],
         '@typescript-eslint/semi': ['error', 'always'],
         '@typescript-eslint/triple-slash-reference': 'off',
@@ -79,12 +79,11 @@ module.exports = {
         'arrow-body-style': 'error',
         'arrow-spacing': 'error',
         'arrow-parens': ['error', 'as-needed'],
-        'comma-dangle': 'error',
         complexity: [
             'error',
             {
-                max: 40
-            }
+                max: 40,
+            },
         ],
         'constructor-super': 'error',
         curly: 'error',
@@ -99,8 +98,8 @@ module.exports = {
         'max-len': [
             'error',
             {
-                code: 160
-            }
+                code: 160,
+            },
         ],
         'new-parens': 'error',
         'no-bitwise': 'error',
@@ -115,7 +114,6 @@ module.exports = {
         'no-fallthrough': 'error',
         'no-invalid-regexp': 'error',
         'no-irregular-whitespace': 'error',
-        'no-multiple-empty-lines': 'error',
         'no-new-wrappers': 'error',
         'no-redeclare': 'error',
         'no-restricted-imports': [
@@ -126,10 +124,10 @@ module.exports = {
                     'aphrodite',
                     {
                         name: 'aphrodite/no-important',
-                        importNames: ['css', 'StyleSheet', 'StyleDeclaration']
-                    }
-                ]
-            }
+                        importNames: ['css', 'StyleSheet', 'StyleDeclaration'],
+                    },
+                ],
+            },
         ],
         'no-shadow': 'error',
         'no-sparse-arrays': 'error',
@@ -148,8 +146,8 @@ module.exports = {
             {
                 blankLine: 'always',
                 prev: '*',
-                next: 'return'
-            }
+                next: 'return',
+            },
         ],
         'prefer-arrow/prefer-arrow-functions': 'error',
         'prefer-const': 'error',
@@ -167,15 +165,15 @@ module.exports = {
             {
                 anonymous: 'never',
                 named: 'never',
-                asyncArrow: 'always'
-            }
+                asyncArrow: 'always',
+            },
         ],
         'spaced-comment': [
             'error',
             'always',
             {
-                markers: ['/']
-            }
+                markers: ['/'],
+            },
         ],
         'no-ex-assign': 'error',
         'no-extra-semi': 'error',
@@ -185,6 +183,30 @@ module.exports = {
         'no-duplicate-case': 'error',
         'no-inner-declarations': 'error',
 
+        'react/react-in-jsx-scope': 0,
+        'object-curly-spacing': ['error', 'always'],
+        'require-jsdoc': 0,
+        'operator-linebreak': ['error', 'after', { overrides: { ':': 'before' } }],
+
+        'no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0 }],
+
+        'newline-before-return': ['error'],
+        'object-shorthand': ['error', 'always'],
+        'comma-dangle': [
+            'error',
+            {
+                arrays: 'always-multiline',
+                objects: 'always-multiline',
+                imports: 'always-multiline',
+                exports: 'always-multiline',
+                functions: 'never',
+            },
+        ],
+
+        'no-undef': 'error',
+
+        'promise/catch-or-return': ['error', { allowFinally: true }],
+
         '@typescript-eslint/tslint/config': [
             'error',
             {
@@ -193,9 +215,9 @@ module.exports = {
                     'no-unnecessary-callback-wrapper': true,
                     'prefer-method-signature': true,
                     typedef: [true, 'call-signature', 'parameter', 'property-declaration', 'member-variable-declaration'],
-                    whitespace: [true, 'check-branch', 'check-decl', 'check-operator', 'check-typecast']
-                }
-            }
-        ]
-    }
+                    whitespace: [true, 'check-branch', 'check-decl', 'check-operator', 'check-typecast'],
+                },
+            },
+        ],
+    },
 };

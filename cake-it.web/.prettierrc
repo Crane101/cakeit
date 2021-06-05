@@ -5,7 +5,7 @@
   "semi": true,
   "quoteProps": "as-needed",
   "singleQuote": true,
-  "trailingComma": "none",
-  "bracketSpacing": false,
+  "trailingComma": "es5",
+  "bracketSpacing": true,
   "arrowParens": "avoid"
 }
