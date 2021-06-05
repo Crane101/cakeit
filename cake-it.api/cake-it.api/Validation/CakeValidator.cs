@@ -1,0 +1,17 @@
+﻿using System;
+using cake_it.api.domain;
+using FluentValidation;
+
+namespace cake_it.api.Validation
+{
+    public class CakeValidator : AbstractValidator<Cake>
+    {
+        public CakeValidator()
+        {
+            RuleFor(cake => cake.Name).NotEmpty();
+            RuleFor(cake => cake.Comment).NotEmpty();
+            RuleFor(cake => cake.ImageUrl).NotEmpty().Must(uri => Uri.TryCreate(uri, UriKind.Absolute, out _));
+            RuleFor(cake => cake.YumFactor).InclusiveBetween(1, 5);
+        }
+    }
+}
