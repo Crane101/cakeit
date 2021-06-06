@@ -1,6 +1,6 @@
 import { ErrorResponse, HandleApiResponse, HandleJsonApiResponse } from '../../../../utils/api-utils';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { apiDefaultOptions, apiPath } from '../../../../constants';
+import { apiPath, contentTypeJson } from '../../../../constants';
 
 import { ICake } from '../../../../models/cake';
 import { firstOrOnly } from '../../../../utils';
@@ -36,7 +36,7 @@ const updateCake = (cakeId: string, cake: ICake): Promise<Response> =>
     fetch(`${apiPath}/cakes/${cakeId}`, {
         method: 'PUT',
         body: JSON.stringify(cake),
-        ...apiDefaultOptions,
+        ...contentTypeJson,
     }).then(HandleApiResponse);
 
 const deleteCake = (cakeId: string): Promise<Response> =>

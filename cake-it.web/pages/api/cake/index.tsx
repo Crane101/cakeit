@@ -1,6 +1,6 @@
 import { ErrorResponse, HandleJsonApiResponse, HandleTextApiResponse } from '../../../utils/api-utils';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { apiDefaultOptions, apiPath } from '../../../constants';
+import { apiPath, contentTypeJson } from '../../../constants';
 
 import { ICake } from '../../../models/cake';
 import { firstOrOnly } from '../../../utils';
@@ -36,5 +36,5 @@ const newCake = (cake: ICake) =>
     fetch(`${apiPath}/cakes`, {
         method: 'POST',
         body: JSON.stringify(cake),
-        ...apiDefaultOptions,
+        ...contentTypeJson,
     }).then(HandleTextApiResponse);
