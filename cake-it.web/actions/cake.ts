@@ -2,7 +2,7 @@ import { ICake } from './../models/cake';
 import { checkForSuccess } from '../utils/client-utils';
 import { contentTypeJson } from '../constants';
 
-export const GetCakes = (lastId: string | null): Promise<ICake[]> =>
+export const GetCakes = (lastId?: string): Promise<ICake[]> =>
     fetch(`/api/cake?maxResults=10${lastId ? `fromId=${lastId}` : ''}`)
         .then(checkForSuccess)
         .then(response => response.json());

@@ -1,8 +1,28 @@
-import { GetCake } from './api/cake/[cakeId]';
-import Head from 'next/head';
-import Image from 'next/image';
-import React from 'react';
+import CakesList from '../components/cakes-list';
+import { GetServerSideProps } from 'next';
+import { ICake } from '../models/cake';
+import { getCakes } from './api/cake';
 
-const Home : React.FC<String> = () => <h1>Cake It</h1>;
+interface ICakeItHomePageProps {
+    cakes: ICake[];
+}
 
-export default Home;
+const CakeItHomePage = ({ cakes }: ICakeItHomePageProps) => (
+    <>
+        <h1>Cake It</h1>
+
+        <CakesList cakes={cakes} />
+    </>
+);
+
+export const getServerSideProps: GetServerSideProps = async context => {
+    const cakes = await getCakes();
+
+    return {
+        props: {
+            cakes,
+        },
+    };
+};
+
+export default CakeItHomePage;

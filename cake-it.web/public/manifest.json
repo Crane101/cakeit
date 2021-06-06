@@ -4,7 +4,7 @@
 	"start_url": "/",
 	"scope": ".",
 	"display": "standalone",
-	"background_color": "rgba(195,33,243,0.4)",
+	"background_color": "#cf36ff",
 	"theme_color": "#f321bf",
 	"description" : "Cake It demo project using Next js with PWA feature set",
 	"dir": "ltr",
