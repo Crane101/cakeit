@@ -2,6 +2,6 @@ export interface ICake {
     id: string;
     name: string;
     comment: string;
-    imageUrl: URL;
+    imageUrl: string;
     yumFactor: number;
 }

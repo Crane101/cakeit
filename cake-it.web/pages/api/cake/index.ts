@@ -29,7 +29,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
 };
 
-export const getCakes = (maxResults: number = 10, fromId?: string): Promise<ICake> =>
+export const getCakes = (maxResults: number = 10, fromId?: string): Promise<ICake[]> =>
     fetch(`${apiPath}/cakes?maxResults=${maxResults}${fromId ? `&fromId=${fromId}` : ''}`).then(HandleJsonApiResponse);
 
 const newCake = (cake: ICake) =>

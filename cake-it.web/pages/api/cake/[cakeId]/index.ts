@@ -30,7 +30,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
 };
 
-export const GetCake = (cakeId: string) => fetch(`${apiPath}/cakes/${cakeId}`).then(HandleJsonApiResponse);
+export const GetCake = (cakeId: string): Promise<ICake> => fetch(`${apiPath}/cakes/${cakeId}`).then(HandleJsonApiResponse);
 
 const updateCake = (cakeId: string, cake: ICake): Promise<Response> =>
     fetch(`${apiPath}/cakes/${cakeId}`, {
