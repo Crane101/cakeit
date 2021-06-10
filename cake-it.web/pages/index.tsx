@@ -1,15 +1,19 @@
+import { Button } from '@material-ui/core';
 import CakesList from '../components/cakes-list';
 import { GetServerSideProps } from 'next';
 import { ICake } from '../models/cake';
+import WhiteIcon from '../components/icons/logo-icon-unfilled-white';
 import { getCakes } from './api/cake';
-
 interface ICakeItHomePageProps {
     cakes: ICake[];
 }
 
 const CakeItHomePage = ({ cakes }: ICakeItHomePageProps) => (
     <>
-        <h1>Cake It</h1>
+	
+        <Button color="primary" variant="contained" aria-label="Add a new Cake" >
+            Submit a Cake
+        </Button>
 
         <CakesList cakes={cakes} />
     </>

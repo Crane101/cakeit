@@ -1,3 +1,5 @@
+import { CakeImage, CakeName, ListItemWrapper } from './index.styles';
+
 import { ICake } from '../../../models/cake';
 
 interface ICakeListItemProps {
@@ -5,9 +7,10 @@ interface ICakeListItemProps {
 }
 
 const CakeListItem = ({ cake }: ICakeListItemProps) => (
-    <div>
-        <p>{cake.name}</p>
-    </div>
+    <ListItemWrapper>
+        <CakeImage src={cake.imageUrl} />
+        <CakeName>{cake.name}</CakeName>
+    </ListItemWrapper>
 );
 
 export default CakeListItem;
