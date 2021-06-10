@@ -14,6 +14,9 @@ module.exports = {
         project: 'tsconfig.json',
         sourceType: 'module',
     },
+	globals: {
+		JSX: true,
+		},
     plugins: ['eslint-plugin-prefer-arrow', 'eslint-plugin-unicorn', 'eslint-plugin-react', '@typescript-eslint', '@typescript-eslint/tslint', 'promise'],
     rules: {
         'brace-style': 'error',
@@ -62,7 +65,7 @@ module.exports = {
                 hoist: 'all',
             },
         ],
-        '@typescript-eslint/no-unnecessary-type-assertion': 'error',
+		        '@typescript-eslint/no-unnecessary-type-assertion': 'error',
         '@typescript-eslint/no-unused-expressions': 'error',
         '@typescript-eslint/no-unused-vars': 'off',
         '@typescript-eslint/prefer-for-of': 'error',
@@ -129,7 +132,6 @@ module.exports = {
                 ],
             },
         ],
-        'no-shadow': 'error',
         'no-sparse-arrays': 'error',
         'no-template-curly-in-string': 'error',
         'no-throw-literal': 'error',
@@ -157,8 +159,8 @@ module.exports = {
         'react/jsx-boolean-value': ['error', 'never'],
         'react/jsx-curly-spacing': 'off',
         'react/jsx-key': 'error',
-        'react/jsx-no-bind': 'error',
         'react/self-closing-comp': 'error',
+        'react/prop-types': 'off',
         semi: 'error',
         'space-before-function-paren': [
             'error',

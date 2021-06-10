@@ -1,10 +1,16 @@
 import '../styles/globals.css';
 
+import { ThemeProvider, createMuiTheme } from '@material-ui/core';
+
 import type { AppProps } from 'next/app';
+import CakeItFooter from '../components/cake-it-footer';
+import CakeItHeader from '../components/cake-it-header';
+import { ContentWrapper } from '../styles/app.styles';
 import Head from 'next/head';
+import cakeItTheme from '../theme';
 
 const app = ({ Component, pageProps }: AppProps) => (
-    <>
+    <ThemeProvider theme={cakeItTheme}>
         <Head>
             <title>Cake It</title>
             <meta name="description" content="Cake It demo project using Next js with PWA feature set" />
@@ -22,8 +28,12 @@ const app = ({ Component, pageProps }: AppProps) => (
             <meta name="msapplication-TileColor" content="#cf36ff" />
             <meta name="theme-color" content="#f321bf" />
         </Head>
-        <Component {...pageProps} />
-    </>
+        <CakeItHeader />
+        <ContentWrapper>
+            <Component {...pageProps} />
+        </ContentWrapper>
+        <CakeItFooter />
+    </ThemeProvider>
 );
 
 export default app;
