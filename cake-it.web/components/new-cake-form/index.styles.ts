@@ -34,8 +34,9 @@ export const YumFactorField = styled.div`
 
 export const YumFactorHiddenInput = styled.input`
     opacity: 0;
+	z-index: -1;
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
 `;
 
