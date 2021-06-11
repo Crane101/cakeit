@@ -1,7 +1,10 @@
 import { Footer } from './index.styles';
 
-const CakeItFooter = () => {
-    return <Footer>Shane Parker Ltd.</Footer>;
-};
+const CakeItFooter = () => (
+    <Footer>
+        <h4>Cake It</h4>
+        <span>Shane Parker Ltd.</span>
+    </Footer>
+);
 
 export default CakeItFooter;

@@ -12,6 +12,7 @@ export const ListItemWrapper = styled.div`
     border: ${palette.border};
     cursor: pointer;
     transition: all 0.3s;
+	padding-right: .5rem;
 
     :hover {
         transform: scale(1.03) translateY(-2px);
