@@ -1,16 +1,20 @@
 import { CakeImage, CakeName, ListItemWrapper } from './index.styles';
 
 import { ICake } from '../../../models/cake';
+import Link from 'next/link';
 
 interface ICakeListItemProps {
     cake: ICake;
 }
 
 const CakeListItem = ({ cake }: ICakeListItemProps) => (
-    <ListItemWrapper>
-        <CakeImage src={cake.imageUrl} />
-        <CakeName>{cake.name}</CakeName>
-    </ListItemWrapper>
+    <Link href={`/cake/${cake.id}`}>
+        <ListItemWrapper>
+            <CakeImage src={cake.imageUrl} />
+
+            <CakeName>{cake.name}</CakeName>
+        </ListItemWrapper>
+    </Link>
 );
 
 export default CakeListItem;
