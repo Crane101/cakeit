@@ -1,0 +1,10 @@
+cakeIt: 
+  component: "@sls-next/serverless-component@1.20.0-alpha.18"
+  inputs:
+    domain: ["cakeit", "shaneparker.ltd"]
+    roleArn: arn:aws:iam::423392516990:role/Cake_It_Web_Role
+    bucketName: "cake-it-web-bucket"
+    name:
+      defaultLambda: cake-it-web-lambda
+      apiLambda: cake-it-web-api-lambda
+      imageLambda: cake-it-web-ImageLambda
