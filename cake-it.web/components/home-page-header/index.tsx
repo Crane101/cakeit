@@ -7,7 +7,7 @@ const HomePageHeader = () => (
         <h2>The Cakes...</h2>
 
         <Link href="/new-cake" passHref>
-            <Button color="primary" variant="contained" aria-label="Add a new Cake">
+            <Button aria-label="Add a new Cake">
                 Submit a Cake
             </Button>
         </Link>

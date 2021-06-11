@@ -23,4 +23,10 @@ export default createMuiTheme({
             },
         },
     },
+    props: {
+        MuiButton: {
+            variant: 'contained',
+            color: 'primary',
+        },
+    },
 });

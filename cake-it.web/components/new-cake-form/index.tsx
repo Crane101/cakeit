@@ -64,17 +64,21 @@ const NewCakeForm = () => {
                 />
 
                 <CommentBox
-                    variant="outlined"
+                    // variant="outlined"
                     fullWidth
                     label="Comment"
                     placeholder="Tell us why you love this cake!"
-                    multiline
-                    rows={4}
-                    rowsMax={4}
+                    // multiline
+                    // rows={4}
+                    // rowsMax={4}
                     value={comment}
                     onChange={ev => setComment(ev.target.value)}
                     required
                     InputLabelProps={{ required: false }}
+                    inputProps={{
+                        maxLength: 200,
+                        minLength: 5,
+                    }}
                 />
 
                 <YumFactorField>
@@ -88,7 +92,7 @@ const NewCakeForm = () => {
             </FieldsWrapper>
 
             <ButtonWrapper>
-                <Button color="primary" type="submit" variant="contained" aria-label="Add a new Cake" startIcon={<MonochromeLogoIcon size={IconSize.small} />}>
+                <Button type="submit" aria-label="Add a new Cake" startIcon={<MonochromeLogoIcon size={IconSize.small} />}>
                     Cake It!
                 </Button>
             </ButtonWrapper>

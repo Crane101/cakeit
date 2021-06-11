@@ -7,6 +7,7 @@ export const FieldsWrapper = styled.div`
     background-color: ${palette.lighten};
     padding: 1rem 0.5rem;
     border-radius: 0.5rem;
+	margin-top: .5rem;
 `;
 
 export const ButtonWrapper = styled.div`
@@ -24,20 +25,30 @@ export const YumFactorField = styled.div`
     label {
         font-size: 1.2rem;
     }
+
+    @media (max-width: 350px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 `;
 
 export const YumFactorHiddenInput = styled.input`
     opacity: 0;
-	position: absolute;
-	top:50%;
-	left:50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
 `;
 
 export const YumFactorInputWrapper = styled.div`
-margin-left: 1rem;
+    margin-left: 1rem;
     position: relative;
+
+    @media (max-width: 350px) {
+        margin-left: 0;
+		margin-top: .5rem;
+    }
 `;
 
 export const CommentBox = styled(TextField)`
-    margin-top: 1rem !important;
+    /* margin-top: 1rem !important; */
 `;

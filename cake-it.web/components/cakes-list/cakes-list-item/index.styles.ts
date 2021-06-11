@@ -8,11 +8,12 @@ export const ListItemWrapper = styled.div`
     border-radius: 0 1rem 0 1rem;
     background-color: ${palette.darken};
     overflow: hidden;
-    align-items: center;
     border: ${palette.border};
     cursor: pointer;
     transition: all 0.3s;
-	padding-right: .5rem;
+    padding-right: 0.5rem;
+    height: 5rem;
+    align-items: center;
 
     :hover {
         transform: scale(1.03) translateY(-2px);
@@ -27,14 +28,22 @@ export const CakeName = styled.span`
     font-size: 1.5rem;
     text-decoration: underline;
     text-decoration-color: ${palette.alternate};
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: block;
+    max-height: 100%;
+    
+    @media (max-width: 400px) {
+		font-size: 1rem;
+	}
 `;
 
 export const CakeImage = styled.div<{ imageUrl: string }>`
-    height: 5rem;
+    height: 100%;
     width: 10rem;
     background-image: url(${({ imageUrl }) => imageUrl});
-    background-position: top; 
-    background-repeat: no-repeat; 
+    background-position: top;
+    background-repeat: no-repeat;
     background-size: cover;
-	clip-path: polygon(0 0,95% 0, 100% 50%, 95% 100%, 0 100%);
+    clip-path: polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%);
 `;

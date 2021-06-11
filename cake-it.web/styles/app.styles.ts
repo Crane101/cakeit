@@ -9,10 +9,8 @@ export const PageWrapper = styled.div`
 
 export const ContentWrapper = styled.div`
     max-width: 50rem;
-	width: 100%;
+    width: 100%;
     padding: 0 0.5rem;
+    align-self: center;
     flex: 1;
-	display: flex;
-	flex-direction: column;
-	align-self: center;
 `;

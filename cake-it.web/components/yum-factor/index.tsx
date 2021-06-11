@@ -1,11 +1,11 @@
+import { IconsWrapper } from './index.styles';
 import LogoIconColour from '../icons/logo-icon-colour';
 import LogoIconUnfilled from '../icons/logo-icon-unfilled';
-
 interface IYumFactorProps {
     value: number;
     maxValue?: Number;
     readonly?: Boolean;
-    setValue?: ((newValue: number) => void);
+    setValue?(newValue: number): void;
 }
 
 const YumFactor = ({ value, setValue, readonly, maxValue = 5 }: IYumFactorProps) => {
@@ -21,7 +21,7 @@ const YumFactor = ({ value, setValue, readonly, maxValue = 5 }: IYumFactorProps)
         </span>
     ));
 
-    return <div>{yumFactorIcons}</div>;
+    return <IconsWrapper>{yumFactorIcons}</IconsWrapper>;
 };
 
 export default YumFactor;
