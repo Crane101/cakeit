@@ -1,4 +1,5 @@
-import { ICake } from './../models/cake';
+import { ICake, INewCake } from './../models/cake';
+
 import { checkForSuccess } from '../utils/client-utils';
 import { contentTypeJson } from '../constants';
 
@@ -12,7 +13,7 @@ export const GetCake = (cakeId: string): Promise<ICake> =>
         .then(checkForSuccess)
         .then(response => response.json());
 
-export const NewCake = (cake: ICake): Promise<string> =>
+export const NewCake = (cake: INewCake): Promise<string> =>
     fetch('/api/cake/', {
         method: 'POST',
         body: JSON.stringify(cake),

@@ -1,4 +1,4 @@
-import pallette from '../../theme/pallette';
+import palette from '../../theme/palette';
 import styled from 'styled-components';
 
 export const CakeViewHeader = styled.div`
@@ -14,17 +14,17 @@ export const CakeViewHeader = styled.div`
 export const CakeImage = styled.img`
     width: 100%;
     /* max-height: 20rem; */
-    box-shadow: ${pallette.shadowDark};
+    box-shadow: ${palette.shadowDark};
     border-radius: 1rem;
-    border: ${pallette.border};
+    border: ${palette.border};
 	margin: 0 auto;
 	display: block;
 `;
 
 export const CakeComment = styled.p`
-    box-shadow: ${pallette.shadow};
-    border: ${pallette.border};
+    box-shadow: ${palette.shadow};
+    border: ${palette.border};
     padding: 1rem;
     border-radius: 0.5rem;
-    background-color: ${pallette.lighten};
+    background-color: ${palette.lighten};
 `;

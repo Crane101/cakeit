@@ -1,8 +1,7 @@
-import { Button } from '@material-ui/core';
 import CakesList from '../components/cakes-list';
 import { GetServerSideProps } from 'next';
+import HomePageHeader from '../components/home-page-header';
 import { ICake } from '../models/cake';
-import WhiteIcon from '../components/icons/logo-icon-unfilled-white';
 import { getCakes } from './api/cake';
 interface ICakeItHomePageProps {
     cakes: ICake[];
@@ -10,11 +9,7 @@ interface ICakeItHomePageProps {
 
 const CakeItHomePage = ({ cakes }: ICakeItHomePageProps) => (
     <>
-	
-        <Button color="primary" variant="contained" aria-label="Add a new Cake" >
-            Submit a Cake
-        </Button>
-
+        <HomePageHeader />
         <CakesList cakes={cakes} />
     </>
 );

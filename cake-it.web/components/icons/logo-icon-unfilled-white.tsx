@@ -1,15 +1,16 @@
-const LogoIconUnfilledWhite = () => (
+import { IconSize } from './IconSize';
+
+const LogoIconUnfilledWhite = ({ size = IconSize.normal }: { size?: IconSize }) => (
     <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 500 500"
-        width="2em"
-        height="2em"
+        width={`${size}rem`}
+        height={`${size}rem`}
         stroke="#fff"
         strokeWidth="20px"
         strokeLinecap="round"
         strokeLinejoin="round"
-		fill="none"
-
+        fill="none"
     >
         <title>{'cupcake'}</title>
         <path d="M422.84 205.8c-.12-1.22-.09-2.29-.26-3.56C407.15 86.73 328.23 103.78 274.6 85s-14.41-70.63-14.41-70.63C167.89-9.3 96.91 102 96.91 102s72.37 58.45 197.63 80.72c61.4 10.95 104.02 12.53 128.3 23.08z" />
