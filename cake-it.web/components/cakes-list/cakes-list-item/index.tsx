@@ -10,7 +10,7 @@ interface ICakeListItemProps {
 const CakeListItem = ({ cake }: ICakeListItemProps) => (
     <Link href={`/cake/${cake.id}`}>
         <ListItemWrapper>
-            <CakeImage src={cake.imageUrl} />
+            <CakeImage imageUrl={cake.imageUrl} />
 
             <CakeName>{cake.name}</CakeName>
         </ListItemWrapper>
