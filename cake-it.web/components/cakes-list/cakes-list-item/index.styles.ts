@@ -32,6 +32,9 @@ export const CakeName = styled.span`
     overflow: hidden;
     display: block;
     max-height: 100%;
+	flex: 1;
+	padding-top: 1rem;
+    margin-bottom: 1rem;
     
     @media (max-width: 400px) {
 		font-size: 1rem;
@@ -41,7 +44,7 @@ export const CakeName = styled.span`
 export const CakeImage = styled.div<{ imageUrl: string }>`
     height: 100%;
     width: 10rem;
-    background-image: url(${({ imageUrl }) => imageUrl});
+    background-image: url(${({ imageUrl }) => imageUrl}); 
     background-position: top;
     background-repeat: no-repeat;
     background-size: cover;

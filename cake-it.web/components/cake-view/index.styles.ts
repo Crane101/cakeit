@@ -29,6 +29,7 @@ export const CakeImage = styled.img`
     border: ${palette.border};
     margin: 0 auto;
     display: block;
+	flex-shrink: 0;
 `;
 
 export const CakeComment = styled.p`
