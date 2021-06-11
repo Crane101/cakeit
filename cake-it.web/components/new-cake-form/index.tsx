@@ -31,7 +31,7 @@ const NewCakeForm = () => {
         NewCake(newCake)
             .then(() => router.push('/'))
             .catch(err => {
-                alert(`Failed to submit cake, please try again or contact support. Details follow.\r\n\r\n${err}`);
+                alert(err);
             });
     };
 
