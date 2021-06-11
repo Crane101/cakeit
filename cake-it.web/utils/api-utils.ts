@@ -1,10 +1,14 @@
+import { hasErrorDetail, hasStatusCode } from './typeguards';
+
 import { IApiError } from '../models/api-models';
 import { NextApiResponse } from 'next';
-import { hasStatusCode } from './typeguards';
 import { logAndReThrow } from './errors';
 import { tryParseJson } from './json';
 
-export const ErrorResponse = (err: any, res: NextApiResponse) => (hasStatusCode(err) ? res.status(err.status).end() : res.status(500).end(err));
+export const ErrorResponse = (err: any, res: NextApiResponse) => {
+    const errorDetail = hasErrorDetail(err) ? err.responseBody.Detail : JSON.stringify(err, null, 2);
+    res.status(hasStatusCode(err) ? err.status : 500).end(errorDetail);
+};
 
 export const HandleApiResponse = (response: Response): Promise<Response> => throwIfFailed(response).catch(logAndReThrow);
 

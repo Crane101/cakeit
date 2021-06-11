@@ -1,4 +1,4 @@
-import { IStatusCode } from '../models/api-models';
+import { IErrorDetail, IStatusCode } from '../models/api-models';
 
 export interface ITypeGuard<T> {
     (value: unknown): value is T;
@@ -23,3 +23,5 @@ export const isEnumMember =
         };
 
 export const hasStatusCode = (candidate: unknown): candidate is IStatusCode => (candidate as IStatusCode).status !== undefined;
+
+export const hasErrorDetail = (candidate: unknown): candidate is IErrorDetail => (candidate as IErrorDetail).responseBody?.Detail !== undefined;

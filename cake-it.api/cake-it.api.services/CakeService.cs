@@ -1,6 +1,7 @@
 ﻿using cake_it.api.domain.Services;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using cake_it.api.domain;
 using cake_it.api.domain.Configuration;
@@ -30,18 +31,24 @@ namespace cake_it.api.services
             return cake;
         }
 
-        public async Task<IEnumerable<CakeEntity>> GetCakes(int pageSize, string fromId)
+        public async Task<IEnumerable<CakeEntity>> GetCakes(int? pageSize = null, string fromId = null)
         {
             return await _dynamoDbService.GetDocuments<CakeEntity>(_settings.CakeTable, fromId, pageSize);
         }
 
-        public async Task<Guid> CreateCake(Cake cake)
+        public async Task<Guid> CreateCake(Cake newCake)
         {
-            var newId = Guid.NewGuid();
-            var success = await _dynamoDbService.UpsertDocument(_settings.CakeTable, newId.ToString(), cake);
-            if (!success) throw new InvalidOperationException($"Unexpected error when attempting to create cake id with data: {JsonConvert.SerializeObject(cake)}.");
+            var allCakes = await GetCakes(); // not viable in a real world situation, but maintains zero cost for this demo project
+            if (allCakes.Any(cake => cake.Name == newCake.Name))
+            {
+                throw new BadRequestException($"Cake name '{newCake.Name}' already exists.");
+            }
 
-            return newId;
+            var newId = Guid.NewGuid();
+            var success = await _dynamoDbService.UpsertDocument(_settings.CakeTable, newId.ToString(), newCake);
+            if (!success) throw new InvalidOperationException($"Unexpected error when attempting to create newCake id with data: {JsonConvert.SerializeObject(newCake)}.");
+
+            return new Guid();
         }
 
         public async Task UpdateCake(Guid cakeId, Cake cake)

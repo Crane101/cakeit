@@ -67,14 +67,14 @@ namespace cake_it.api.services
             }
         }
 
-        public async Task<IEnumerable<T>> GetDocuments<T>(string tableName, string afterKey, int resultsQuantity) where T : IEntity
+        public async Task<IEnumerable<T>> GetDocuments<T>(string tableName, string afterKey = null, int? resultsQuantity = null) where T : IEntity
         {
             try
             {
                 using var dynamoDbClient = new AmazonDynamoDBClient();
                 var dynamoTable = Table.LoadTable(dynamoDbClient, tableName);
 
-                var scan = dynamoTable.Scan(new ScanOperationConfig() { Limit = resultsQuantity, PaginationToken = afterKey });
+                var scan = dynamoTable.Scan(new ScanOperationConfig() { Limit = resultsQuantity ?? int.MaxValue, PaginationToken = afterKey });
                 var result = await scan.GetRemainingAsync();
 
                 return result.Select(r => JsonConvert.DeserializeObject<T>(r.ToJson()));
