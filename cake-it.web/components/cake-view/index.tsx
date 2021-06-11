@@ -12,7 +12,6 @@ interface ICakeViewProps {
 
 const CakeView = ({ cake }: ICakeViewProps) => (
     <>
-      
 
         <CakeViewHeader>
             <h2>{cake.name}</h2>
@@ -23,7 +22,7 @@ const CakeView = ({ cake }: ICakeViewProps) => (
 
         <CakeComment>{cake.comment}</CakeComment>
 
-		<Link href="/" passHref>
+        <Link href="/" passHref>
             <BackButton variant="outlined" aria-label="Back to cakes list" startIcon={<ChevronLeft />}>
                 Back to The Cakes
             </BackButton>

@@ -1,6 +1,6 @@
 import CakeListItem from './cakes-list-item';
 import { ICake } from '../../models/cake';
-import {ListWrapper} from './index.styles';
+import { ListWrapper } from './index.styles';
 
 interface ICakeListProps {
     cakes: ICake[];

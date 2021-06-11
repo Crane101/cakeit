@@ -1,7 +1,5 @@
 import NewCakeForm from '../components/new-cake-form';
 
-const NewCakePage = () => {
-    return <NewCakeForm />;
-};
+const NewCakePage = () => <NewCakeForm />;
 
 export default NewCakePage;
