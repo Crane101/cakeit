@@ -4,7 +4,7 @@ import { hasStatusCode } from './typeguards';
 import { logAndReThrow } from './errors';
 import { tryParseJson } from './json';
 
-export const ErrorResponse = (err: any, res: NextApiResponse) => (hasStatusCode(err) ? res.status(err.status).end() : res.status(500).end(err));
+export const ErrorResponse = (err: any, res: NextApiResponse) => res.status(hasStatusCode(err) ? err.status : 500).end(JSON.stringify(err, null, 2));
 
 export const HandleApiResponse = (response: Response): Promise<Response> => throwIfFailed(response).catch(logAndReThrow);
 
