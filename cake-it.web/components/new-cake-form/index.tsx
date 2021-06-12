@@ -39,6 +39,10 @@ const NewCakeForm = () => {
             });
     };
 
+    const noOp = () => {
+        // no op
+    };
+
     const cakeNameOnChangeHandler = (ev: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
         const updatedName = ev.target.value;
         setCakeNameTaken(updatedName !== '' && cakeExists(updatedName));
@@ -100,7 +104,7 @@ const NewCakeForm = () => {
                     <label>Yum Factor</label>
 
                     <YumFactorInputWrapper>
-                        <YumFactorHiddenInput type="number" value={yumFactor} min={1} max={5} onInvalid={yumFactorOnInvalidHandler} />
+                        <YumFactorHiddenInput type="number" onChange={noOp} value={yumFactor} min={1} max={5} onInvalid={yumFactorOnInvalidHandler} />
                         <YumFactor value={yumFactor} setValue={setYumFactor} />
                     </YumFactorInputWrapper>
                 </YumFactorField>
