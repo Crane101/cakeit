@@ -1,13 +1,15 @@
 import { Button, FormControl, FormControlLabel, FormHelperText, Input, InputLabel, TextField } from '@material-ui/core';
 import { ButtonWrapper, CommentBox, FieldsWrapper, YumFactorField, YumFactorHiddenInput, YumFactorInputWrapper } from './index.styles';
-import { useEffect, useRef, useState } from 'react';
+import { ChangeEvent, ChangeEventHandler, useEffect, useRef, useState } from 'react';
 
+import CakesContext from '../../context/cakes-context';
 import { FormEvent } from 'react';
 import { INewCake } from '../../models/cake';
 import { IconSize } from '../icons/IconSize';
 import MonochromeLogoIcon from '../icons/logo-icon-unfilled-white';
 import { NewCake } from '../../actions/cake';
 import YumFactor from '../yum-factor';
+import { useContextWithGuard } from '../../context/context-utils';
 import { useRouter } from 'next/router';
 
 const NewCakeForm = () => {
@@ -15,7 +17,9 @@ const NewCakeForm = () => {
     const [yumFactor, setYumFactor] = useState(0);
     const [imageUrl, setImageUrl] = useState('');
     const [comment, setComment] = useState('');
+    const [cakeNameTaken, setCakeNameTaken] = useState(false);
 
+    const { cakeExists } = useContextWithGuard(CakesContext);
     const router = useRouter();
 
     const onSubmitNewCake = (ev: FormEvent) => {
@@ -35,9 +39,17 @@ const NewCakeForm = () => {
             });
     };
 
+    const cakeNameOnChangeHandler = (ev: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
+        const updatedName = ev.target.value;
+        setCakeNameTaken(updatedName !== '' && cakeExists(updatedName));
+        setCakeName(updatedName);
+    };
+
     const yumFactorOnInvalidHandler = (ev: FormEvent<HTMLInputElement>) => {
         ev.currentTarget.setCustomValidity(yumFactor === 0 ? 'Select a Yum Factor!' : '');
     };
+
+    const cakeNameHelperText = cakeNameTaken ? 'This cake name already exists!' : 'Make sure this name hasn`t been used already';
 
     return (
         <form onSubmit={onSubmitNewCake}>
@@ -47,11 +59,12 @@ const NewCakeForm = () => {
                 <TextField
                     fullWidth
                     label="Cake Name"
-                    helperText="Make sure this name hasn`t been used already!"
+                    helperText={cakeNameHelperText}
                     value={cakeName}
-                    onChange={ev => setCakeName(ev.target.value)}
+                    onChange={cakeNameOnChangeHandler}
                     required
                     InputLabelProps={{ required: false }}
+                    error={cakeNameTaken}
                 />
 
                 <TextField
@@ -94,7 +107,7 @@ const NewCakeForm = () => {
             </FieldsWrapper>
 
             <ButtonWrapper>
-                <Button type="submit" aria-label="Add a new Cake" startIcon={<MonochromeLogoIcon size={IconSize.small} />}>
+                <Button type="submit" aria-label="Add a new Cake" startIcon={<MonochromeLogoIcon size={IconSize.small} />} disabled={cakeNameTaken}>
                     Cake It!
                 </Button>
             </ButtonWrapper>

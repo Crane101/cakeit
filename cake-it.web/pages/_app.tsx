@@ -6,6 +6,7 @@ import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 import type { AppProps } from 'next/app';
 import CakeItFooter from '../components/cake-it-footer';
 import CakeItHeader from '../components/cake-it-header';
+import { CakesContextProvider } from '../context/cakes-context';
 import Head from 'next/head';
 import cakeItTheme from '../theme/mui';
 
@@ -18,13 +19,15 @@ const app = ({ Component, pageProps }: AppProps) => (
             <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
             <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
         </Head>
-        <PageWrapper>
-            <CakeItHeader />
-            <ContentWrapper>
-                <Component {...pageProps} />
-            </ContentWrapper>
-            <CakeItFooter />
-        </PageWrapper>
+        <CakesContextProvider>
+            <PageWrapper>
+                <CakeItHeader />
+                <ContentWrapper>
+                    <Component {...pageProps} />
+                </ContentWrapper>
+                <CakeItFooter />
+            </PageWrapper>
+        </CakesContextProvider>
     </ThemeProvider>
 );
 
