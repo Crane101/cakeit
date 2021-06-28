@@ -30,6 +30,7 @@
 - Delete on non existant cake ID returns ok
 - max results on get cakes does not appear to work
 - GET on non existant cake returns 500
+- CakeExists should be case-insensitive
 
 ### Infra
 - BE authentication
