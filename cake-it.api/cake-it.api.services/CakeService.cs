@@ -48,7 +48,7 @@ namespace cake_it.api.services
             var success = await _dynamoDbService.UpsertDocument(_settings.CakeTable, newId.ToString(), newCake);
             if (!success) throw new InvalidOperationException($"Unexpected error when attempting to create newCake id with data: {JsonConvert.SerializeObject(newCake)}.");
 
-            return new Guid();
+            return newId;
         }
 
         public async Task UpdateCake(Guid cakeId, Cake cake)
